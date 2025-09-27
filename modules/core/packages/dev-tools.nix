@@ -1,0 +1,26 @@
+{
+  config,
+  pkgs,
+  ...
+}: {
+  environment.systemPackages = with pkgs; [
+    gcc
+    gnumake
+    bcc
+    tmux
+    zsh
+    fish
+    fzf
+    ripgrep
+    luarocks
+    lua-language-server
+    nodePackages.prettier
+    nodePackages.eslint_d
+    kustomize
+    yq-go
+    jq
+    cilium-cli
+    flux
+    virt-manager
+  ];
+}
