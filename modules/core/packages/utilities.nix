@@ -6,6 +6,6 @@
     tree
     fastfetch
     starship
+    warp-terminal
   ];
 }
-
