@@ -22,7 +22,11 @@
     suspendKeyLongPress = "ignore";
   };
 
+  # Thunderbolt security daemon
   services.hardware.bolt.enable = true;
+
+  # Enable usbmuxd for iPhone/iOS device support (USB tethering, pairing)
+  services.usbmuxd.enable = true;
 
   # Maintenance and firmware updates
   services.fstrim.enable = true;
