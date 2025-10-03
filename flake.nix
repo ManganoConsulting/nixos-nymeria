@@ -21,6 +21,8 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          # Back up conflicting files instead of failing activation
+          home-manager.backupFileExtension = "backup";
           home-manager.users.matthew = import ./home/matthew/home.nix;
         }
       ];

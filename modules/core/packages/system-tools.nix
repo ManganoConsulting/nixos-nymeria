@@ -23,5 +23,6 @@
     kubernetes-helm
     bat
     argocd
+    snapd
   ];
 }

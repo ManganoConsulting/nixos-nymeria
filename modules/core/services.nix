@@ -28,6 +28,9 @@
   # Enable usbmuxd for iPhone/iOS device support (USB tethering, pairing)
   services.usbmuxd.enable = true;
 
+  # Enable Snap daemon for installing Mozilla VPN client
+  services.snapd.enable = true;
+
   # Maintenance and firmware updates
   services.fstrim.enable = true;
   services.fwupd.enable = true;

@@ -13,6 +13,7 @@
     ethtool
     openvswitch
     wireshark-cli
+    wireguard-tools
   ];
 }
 

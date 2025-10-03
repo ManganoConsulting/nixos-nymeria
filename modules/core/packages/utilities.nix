@@ -8,5 +8,7 @@
     starship
     warp-terminal
     vivaldi
+    vivaldi-ffmpeg-codecs
+    widevine-cdm
   ];
 }
