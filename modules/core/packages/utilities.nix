@@ -6,7 +6,7 @@
     tree
     fastfetch
     starship
-    warp-terminal
+    unstable.warp-terminal  # Use latest version from unstable
     vivaldi
     vivaldi-ffmpeg-codecs
     widevine-cdm

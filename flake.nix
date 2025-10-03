@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nvf.url = "github:notashelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -10,7 +11,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nvf, home-manager, ... }: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, nvf, home-manager, ... }: {
     nixosConfigurations.nymeria = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
@@ -25,6 +26,17 @@
           home-manager.backupFileExtension = "backup";
           home-manager.users.matthew = import ./home/matthew/home.nix;
         }
+        # Make nixpkgs-unstable available to all modules
+        ({ config, pkgs, ... }: {
+          nixpkgs.overlays = [
+            (final: prev: {
+              unstable = import nixpkgs-unstable {
+                system = prev.system;
+                config.allowUnfree = true;
+              };
+            })
+          ];
+        })
       ];
     };
   };
