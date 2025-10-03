@@ -7,5 +7,6 @@
     fastfetch
     starship
     warp-terminal
+    vivaldi
   ];
 }
