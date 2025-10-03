@@ -1,11 +1,11 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   programs.nvf = {
     enable = true;
     settings = {
       vim = {
         languages = {
-          enableLSP = true;
-          enableFormat = true;
+          enableLSP = lib.mkForce false; # Handled by lsp.enable in plugins.nix
+          enableFormat = lib.mkForce false; # Disable to avoid null-ls conflicts
           enableTreesitter = true;
           nix.enable = true;
           python = {

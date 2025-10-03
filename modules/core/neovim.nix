@@ -1,60 +1,55 @@
-{pkgs, ...}: {
-  # System-wide Neovim configuration (This is required!)
+{pkgs, lib, ...}: {
   programs.nvf = {
     enable = true;
     settings = {
       vim = {
-        viAlias = false; # Disable vi alias
-        vimAlias = true; # Enable vim alias (so vim opens nvim)
+        # Basic settings
+        viAlias = false;
+        vimAlias = true;
+        
+        # Theme
         theme = {
           enable = true;
           name = "gruvbox";
           style = "dark";
         };
+        
+        # Core functionality
         statusline.lualine.enable = true;
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
+        
+        # File tree and navigation
+        filetree.neo-tree.enable = true;
+        binds.whichKey.enable = true;
+        
+        # Utilities
+        utility = {
+          surround.enable = true;
+          yanky-nvim.enable = false;
+        };
+        
+        # Language support (simplified to avoid conflicts)
+        languages = {
+          enableTreesitter = true;
+          # Individual language configs
+          nix.enable = true;
+          python.enable = true;
+          rust.enable = true;
+          go.enable = true;
+          bash.enable = true;
+          yaml.enable = true;
+        };
+        
+        # Debugging
         debugger = {
           nvim-dap = {
             enable = true;
             ui.enable = true;
           };
         };
-        lsp.enable = true;
-        languages = {
-          enableFormat = true;
-          enableTreesitter = true;
-          nix.enable = true;
-          python = {
-            enable = true;
-            dap = {
-              enable = true;
-              debugger = "debugpy";
-            };
-            lsp = {
-              enable = true;
-              server = "basedpyright";
-            };
-          };
-          rust = {
-            enable = true;
-            crates.enable = true;
-          };
-          go.enable = true;
-          bash.enable = true;
-        };
-        filetree = {
-          neo-tree = {
-            enable = true;
-          };
-        };
-        binds = {
-          whichKey.enable = true;
-        };
-        utility = {
-          surround.enable = true;
-          yanky-nvim.enable = false;
-        };
+        
+        # Custom keymaps
         keymaps = [
           {
             key = "<leader>wq";

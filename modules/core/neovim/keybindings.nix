@@ -1,10 +1,12 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.nvf = {
-    enable = true;
     settings = {
       vim = {
+        # File tree and utility keybindings
+        filetree.neo-tree.enable = true;
+        binds.whichKey.enable = true;
+        utility.surround.enable = true;
+        
         keymaps = [
           {
             key = "<leader>wq";
@@ -25,4 +27,3 @@
     };
   };
 }
-        
