@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  programs.hyprland.settings = {
+  wayland.windowManager.hyprland.settings = {
     general = {
       gaps_in = 5;
       gaps_out = 20;

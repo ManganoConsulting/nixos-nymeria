@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  programs.hyprland.settings = {
+  wayland.windowManager.hyprland.settings = {
     # General Window Rules
     windowrulev2 = [
       "suppressevent maximize, class:.*"  # Ignore maximize requests from apps

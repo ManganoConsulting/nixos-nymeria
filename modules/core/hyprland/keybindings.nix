@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  programs.hyprland.settings= {
+  wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER"; # Use the Windows key as the main modifier
 
     bind = [

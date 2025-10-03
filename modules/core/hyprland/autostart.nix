@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  programs.hyprland.settings.exec-once = [
+  wayland.windowManager.hyprland.settings.exec-once = [
     # Uncomment these if needed
     # "$terminal"
     # "nm-applet &"
-    # "waybar & hyprpaper & firefox"
+    # "waybar & hyprpaper & vivaldi"
   ];
 }
 

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  programs.hyprland.settings.animations = {
+  wayland.windowManager.hyprland.settings.animations = {
     enabled = true;
     bezier = [
       "easeOutQuint,0.23,1,0.32,1"
