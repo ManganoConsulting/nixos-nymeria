@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-  programs.hyprland.enable = true;
   programs.firefox.enable = true;
   programs.zsh.enable = true;
   programs.virt-manager.enable = true;
