@@ -10,16 +10,16 @@
     PermitRootLogin = "no";
   };
 
-  services.logind = {
-    lidSwitch = "ignore";
-    lidSwitchExternalPower = "ignore";
-    lidSwitchDocked = "ignore";
-    powerKey = "ignore";
-    rebootKey = "ignore";
-    rebootKeyLongPress = "ignore";
-    suspendKey = "ignore";
-    hibernateKey = "ignore";
-    suspendKeyLongPress = "ignore";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitchDocked = "ignore";
+    HandlePowerKey = "ignore";
+    HandleRebootKey = "ignore";
+    HandleRebootKeyLongPress = "ignore";
+    HandleSuspendKey = "ignore";
+    HandleHibernateKey = "ignore";
+    HandleSuspendKeyLongPress = "ignore";
   };
 
   # Thunderbolt security daemon

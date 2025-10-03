@@ -20,8 +20,8 @@
             ui.enable = true;
           };
         };
+        lsp.enable = true;
         languages = {
-          enableLSP = true;
           enableFormat = true;
           enableTreesitter = true;
           nix.enable = true;

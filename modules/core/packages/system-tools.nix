@@ -17,8 +17,8 @@
     tftp-hpa
     kubectl
     talosctl
-    omnictl
-    ceph
+    # omnictl  # Temporarily disabled due to network timeouts
+    # ceph  # Temporarily disabled due to build issue in unstable
     kubelogin-oidc
     kubernetes-helm
     bat

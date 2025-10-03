@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable modern graphics stack on 25.05+
