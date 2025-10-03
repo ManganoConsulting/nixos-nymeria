@@ -26,7 +26,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
-    TERMINAL = "warp-terminal";
+    TERMINAL = "ghostty";
   };
 
   # Match NixOS release used for this home config

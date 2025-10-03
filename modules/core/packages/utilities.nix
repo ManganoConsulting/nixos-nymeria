@@ -6,6 +6,7 @@
     tree
     fastfetch
     starship
+    ghostty
     warp-terminal
     vivaldi
     vivaldi-ffmpeg-codecs

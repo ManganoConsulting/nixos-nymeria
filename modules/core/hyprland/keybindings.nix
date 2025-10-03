@@ -7,6 +7,7 @@
     bind = [
       # Launch Applications
       "$mainMod, return, exec, $terminal"
+      "$mainMod, W, exec, warp-terminal"
       "$mainMod, C, killactive"
       "$mainMod, M, exit"
       "$mainMod, E, exec, $fileManager"
@@ -72,9 +73,6 @@
       "$mainMod, mouse_down, workspace, e+1"
       "$mainMod, mouse_up, workspace, e-1"
 
-      # Move & Resize Windows
-      "bindm = $mainMod, mouse:272, movewindow"
-      "bindm = $mainMod, mouse:273, resizewindow"
 
       # Multimedia Keys
       ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
@@ -89,6 +87,12 @@
       ", XF86AudioPause, exec, playerctl play-pause"
       ", XF86AudioPlay, exec, playerctl play-pause"
       ", XF86AudioPrev, exec, playerctl previous"
+    ];
+
+    # Mouse bindings for window management
+    bindm = [
+      "$mainMod, mouse:272, movewindow"
+      "$mainMod, mouse:273, resizewindow"
     ];
   };
 }

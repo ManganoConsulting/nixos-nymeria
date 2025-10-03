@@ -2,7 +2,7 @@
 
 {
   wayland.windowManager.hyprland.settings = {
-    "$terminal" = "warp-terminal";
+    "$terminal" = "ghostty";
     "$fileManager" = "dolphin";
     "$menu" = "wofi --show drun";
     "$browser" = "vivaldi";

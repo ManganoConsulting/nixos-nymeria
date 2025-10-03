@@ -13,7 +13,7 @@
     XDG_CURRENT_DESKTOP = "Hyprland";
     EDITOR = "nvim";
     VISUAL = "nvim";
-    TERMINAL = "warp-terminal";
+    TERMINAL = "ghostty";
   };
 
   # XDG portals for screen share / file pickers under Hyprland
