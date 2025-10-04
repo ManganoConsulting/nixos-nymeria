@@ -87,6 +87,10 @@
       ", XF86AudioPause, exec, playerctl play-pause"
       ", XF86AudioPlay, exec, playerctl play-pause"
       ", XF86AudioPrev, exec, playerctl previous"
+
+      # Mozilla VPN controls
+      "$mainMod SHIFT, V, exec, vpn-toggle"
+      "$mainMod CTRL, V, exec, vpn-status notify"
     ];
 
     # Mouse bindings for window management
