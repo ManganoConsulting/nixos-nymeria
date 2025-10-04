@@ -14,5 +14,8 @@
 
     # Polkit agent (for authentication prompts in Wayland/Hyprland)
     lxqt.lxqt-policykit
+    
+    # VPN client
+    mozillavpn
   ];
 }

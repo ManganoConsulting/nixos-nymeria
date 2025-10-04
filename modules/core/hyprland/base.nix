@@ -40,4 +40,11 @@
     pkgs.xdg-desktop-portal-hyprland
     pkgs.xdg-desktop-portal-gtk
   ];
+  # Ensure FileChooser and others are provided by GTK backend while using Hyprland
+  xdg.portal.config = {
+    common = {
+      default = [ "hyprland" "gtk" ];
+    };
+  };
+  xdg.portal.xdgOpenUsePortal = true;
 }

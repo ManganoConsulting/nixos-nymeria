@@ -31,4 +31,7 @@
   # Maintenance and firmware updates
   services.fstrim.enable = true;
   services.fwupd.enable = true;
+
+  # Power management DBus service required by some apps (e.g., Mozilla VPN UI)
+  services.upower.enable = true;
 }
