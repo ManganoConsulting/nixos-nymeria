@@ -20,16 +20,28 @@ let
       code=1
     fi
 
-    # On-screen feedback in Hyprland (non-blocking)
-    if command -v hyprctl >/dev/null 2>&1; then
+    # Notify via libnotify (handled by swaync)
+    if command -v notify-send >/dev/null 2>&1; then
       case "$state" in
         activate)
-          hyprctl notify 0 2500 "Mozilla VPN: activated" >/dev/null 2>&1 || true ;;
+          notify-send -a "Mozilla VPN" -u low -i network-vpn "Mozilla VPN" "Activated" || true ;;
         deactivate)
-          hyprctl notify 0 2500 "Mozilla VPN: deactivated" >/dev/null 2>&1 || true ;;
+          notify-send -a "Mozilla VPN" -u low -i network-vpn "Mozilla VPN" "Deactivated" || true ;;
         *)
-          hyprctl notify 2 4000 "Mozilla VPN: error (see logs)" >/dev/null 2>&1 || true ;;
+          notify-send -a "Mozilla VPN" -u critical -i dialog-error "Mozilla VPN" "Error (see logs)" || true ;;
       esac
+    else
+      # Fallback to Hyprland notify if available
+      if command -v hyprctl >/dev/null 2>&1; then
+        case "$state" in
+          activate)
+            hyprctl notify 0 2500 "Mozilla VPN: activated" >/dev/null 2>&1 || true ;;
+          deactivate)
+            hyprctl notify 0 2500 "Mozilla VPN: deactivated" >/dev/null 2>&1 || true ;;
+          *)
+            hyprctl notify 2 4000 "Mozilla VPN: error (see logs)" >/dev/null 2>&1 || true ;;
+        esac
+      fi
     fi
 
     exit "$code"
@@ -44,12 +56,15 @@ let
       status="active"
     fi
 
-    msg="Mozilla VPN: $status"
-    if [[ ''${1:-} == notify ]] && command -v hyprctl >/dev/null 2>&1; then
-      hyprctl notify 0 2000 "$msg" >/dev/null 2>&1 || true
+    if [[ ''${1:-} == notify ]]; then
+      if command -v notify-send >/dev/null 2>&1; then
+        notify-send -a "Mozilla VPN" -u low -i network-vpn "Mozilla VPN" "Status: $status" || true
+      elif command -v hyprctl >/dev/null 2>&1; then
+        hyprctl notify 0 2000 "Mozilla VPN: $status" >/dev/null 2>&1 || true
+      fi
     fi
 
-    echo "$msg"
+    echo "Mozilla VPN: $status"
   '';
 
 in {
