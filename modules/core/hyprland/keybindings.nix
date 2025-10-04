@@ -91,6 +91,11 @@
       # Mozilla VPN controls
       "$mainMod SHIFT, V, exec, vpn-toggle"
       "$mainMod CTRL, V, exec, vpn-status notify"
+
+      # Sway Notification Center controls (no taskbar needed)
+      "$mainMod, N, exec, swaync-client --toggle-panel"
+      "$mainMod CTRL, N, exec, swaync-client --toggle-dnd"
+      "$mainMod SHIFT, N, exec, swaync-client --close-panel"
     ];
 
     # Mouse bindings for window management

@@ -31,6 +31,10 @@
     wget         # File downloader
     curl         # HTTP client
     jq           # JSON processor
+
+    # Notifications
+    libnotify                # provides notify-send
+    swaynotificationcenter   # swaync + swaync-client
     
     # Development tools
     git          # Version control
