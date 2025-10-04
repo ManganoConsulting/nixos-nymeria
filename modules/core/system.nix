@@ -4,6 +4,9 @@
   system.stateVersion = "25.11";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Use the latest kernel from nixpkgs
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Enable modern graphics stack on 25.05+
   hardware.graphics.enable = true;
   # hardware.graphics.enable32Bit = true; # Uncomment for 32-bit GL (Steam/Wine)
