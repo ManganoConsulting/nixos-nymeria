@@ -193,6 +193,20 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
     TERMINAL = "ghostty";
+    BROWSER = "vivaldi"; # ensure CLI tools use Vivaldi
+  };
+
+  # Set Vivaldi as the default browser/handler for web links and HTML
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = [ "vivaldi-stable.desktop" ];
+      "x-scheme-handler/http" = [ "vivaldi-stable.desktop" ];
+      "x-scheme-handler/https" = [ "vivaldi-stable.desktop" ];
+      # optional but helpful
+      "x-scheme-handler/about" = [ "vivaldi-stable.desktop" ];
+      "x-scheme-handler/unknown" = [ "vivaldi-stable.desktop" ];
+    };
   };
 
   # Match NixOS release used for this home config
