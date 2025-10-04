@@ -217,7 +217,7 @@
   # Match NixOS release used for this home config
   my.gitRepos = {
     enable = true;
-    repos = import ../git-repos.nix;
+    repos = import ../repos.nix;
   };
 
   home.stateVersion = "25.11";
