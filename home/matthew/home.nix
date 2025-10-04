@@ -9,6 +9,7 @@
     ../../modules/core/hyprland/monitors.nix
     ../../modules/core/hyprland/programs.nix
     ../../modules/core/hyprland/windowrules.nix
+    ../../modules/home/git-repos.nix
   ];
 
   home.username = "matthew";
@@ -214,5 +215,10 @@
   };
 
   # Match NixOS release used for this home config
+  my.gitRepos = {
+    enable = true;
+    repos = import ../git-repos.nix;
+  };
+
   home.stateVersion = "25.11";
 }
