@@ -63,7 +63,7 @@
     };
     
     # Additional zsh configuration  
-    initExtra = ''
+    initContent = ''
       # Load completions early
       autoload -U compinit && compinit
       
