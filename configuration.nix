@@ -20,5 +20,6 @@
     ./modules/core/neovim.nix
     ./modules/core/virtualisation.nix
     ./modules/core/hyprland.nix
+    ./modules/core/mozillavpn.nix
   ];
 }
