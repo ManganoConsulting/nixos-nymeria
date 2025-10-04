@@ -5,8 +5,8 @@ let
     #!/usr/bin/env bash
     set -euo pipefail
 
-    # Decide action based on presence of any WireGuard interface
-    if ${pkgs.wireguard-tools}/bin/wg show 2>/dev/null | grep -q '^interface: '; then
+    # Decide action based on moz0 link state (non-root friendly)
+    if ${pkgs.iproute2}/bin/ip -o link show moz0 2>/dev/null | grep -q 'UP'; then
       action=deactivate
     else
       action=activate
@@ -52,7 +52,7 @@ let
     set -euo pipefail
 
     status="inactive"
-    if ${pkgs.wireguard-tools}/bin/wg show 2>/dev/null | grep -q '^interface: '; then
+    if ${pkgs.iproute2}/bin/ip -o link show moz0 2>/dev/null | grep -q 'UP'; then
       status="active"
     fi
 
