@@ -105,29 +105,6 @@
       bindkey '^T' fzf-file-widget
       bindkey '^[c' fzf-cd-widget
     '';
-
-    # Add Kubernetes/Helm completions and dynamic KUBECONFIG wiring
-    initExtra = ''
-      # kubectl/helm completions
-      if command -v kubectl >/dev/null 2>&1; then
-        source <(kubectl completion zsh)
-        alias k=kubectl
-        command -v compdef >/dev/null 2>&1 && compdef kubectl k
-      fi
-      if command -v helm >/dev/null 2>&1; then
-        source <(helm completion zsh)
-      fi
-
-      # Build KUBECONFIG dynamically from ~/.kube/configs/*.yaml if present
-      if [ -d "$HOME/.kube/configs" ]; then
-        files=($HOME/.kube/configs/*.yaml(N))
-        if [ ''${#files[@]} -gt 0 ]; then
-          typeset -g KUBECONFIG
-          KUBECONFIG="''${(j.:.)files}"
-          export KUBECONFIG
-        fi
-      fi
-    '';
   };
   
   # Starship prompt
