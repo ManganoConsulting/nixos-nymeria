@@ -81,6 +81,11 @@ in {
       Type = "simple";
       ExecStart = "${pkgs.mozillavpn}/bin/mozillavpn linuxdaemon";
       Restart = "on-failure";
+      # Basic service hardening without interfering with network configuration
+      NoNewPrivileges = true;
+      CapabilityBoundingSet = "CAP_NET_ADMIN CAP_NET_RAW";
+      AmbientCapabilities = "CAP_NET_ADMIN CAP_NET_RAW";
+      PrivateTmp = true;
     };
   };
 }

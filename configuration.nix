@@ -21,6 +21,7 @@
     ./modules/core/virtualisation.nix
     ./modules/core/hyprland.nix
     ./modules/core/mozillavpn.nix
+    ./modules/core/cloudflare-warp.nix
     ./modules/core/git-repo-manager.nix
   ];
 }
