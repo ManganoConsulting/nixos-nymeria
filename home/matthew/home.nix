@@ -23,7 +23,6 @@
     ripgrep      # Modern replacement for grep (rg)
     fd           # Modern replacement for find
     fzf          # Fuzzy finder
-    starship     # Cross-shell prompt
     zoxide       # Smart directory jumper (z command)
     
     # Additional useful tools
