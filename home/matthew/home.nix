@@ -303,15 +303,16 @@
   # Autostart swaync (Sway Notification Center) as a user service
   services.swaync.enable = true;
 
-  # Manage Ghostty terminal config
-  xdg.configFile."ghostty/config".text = ''
-    # Ghostty config managed by Home Manager
-    font-family = JetBrainsMono Nerd Font
-    font-size = 12
-    theme = gruvbox-dark
-    confirm-close = false
-    copy-on-select = true
-  '';
+  # Manage Ghostty terminal config via Home Manager module
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      "font-family" = "JetBrainsMono Nerd Font";
+      "font-size" = 12;
+      theme = "Gruvbox Dark Hard";
+      "copy-on-select" = true;
+    };
+  };
 
   # k9s configuration (minimal)
   xdg.configFile."k9s/config.yml".text = ''
