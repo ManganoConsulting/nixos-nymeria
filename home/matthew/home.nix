@@ -211,10 +211,8 @@
 
   # Placeholder for work-specific Git config; edit to set your work email.
   xdg.configFile."git/work.gitconfig".text = ''
-    # Work Git config (applies only under GithubProjects/ManganoConsulting)
-    # Uncomment and set your work email:
-    # [user]
-    #   email = you@company.example
+    [user]
+      email = matthew@mangano-consulting.com
   '';
 
   # SSH managed declaratively
