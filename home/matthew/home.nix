@@ -41,6 +41,7 @@
     git          # Version control
     gh           # GitHub CLI
     delta        # Git diff pager
+    ghostty      # Terminal emulator
     
     # System utilities
     neofetch     # System info
@@ -291,6 +292,16 @@
     enable = true;
     enableZshIntegration = true;
   };
+
+  # Manage Ghostty terminal config
+  xdg.configFile."ghostty/config".text = ''
+    # Ghostty config managed by Home Manager
+    font-family = JetBrainsMono Nerd Font
+    font-size = 12
+    theme = gruvbox-dark
+    confirm-close = false
+    copy-on-select = true
+  '';
 
   # Default editor/user session variables
   home.sessionVariables = {
