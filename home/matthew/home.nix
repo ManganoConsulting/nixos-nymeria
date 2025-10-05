@@ -40,6 +40,7 @@
     # Development tools
     git          # Version control
     gh           # GitHub CLI
+    delta        # Git diff pager
     
     # System utilities
     neofetch     # System info
@@ -173,15 +174,48 @@
   # Better Git integration
   programs.git = {
     enable = true;
-    # You can add your git config here later
-    # userName = "Your Name";
-    # userEmail = "your.email@example.com";
+    userName = "Matthew Mangano";
+    userEmail = "matthew.mangano@gmail.com";
+
+    delta = {
+      enable = true;
+    };
+
+    # Global gitignore patterns
+    ignores = [
+      ".DS_Store"
+      "*.swp"
+      "*.swo"
+      "*~"
+      "node_modules"
+      "dist"
+      "target"
+      ".venv"
+      ".direnv"
+      ".env"
+      ".idea"
+      ".vscode"
+    ];
+
     extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = true;
       push.autoSetupRemote = true;
+      fetch.prune = true;
+      color.ui = "auto";
+      diff.colorMoved = "zebra";
+      includeIf."gitdir:${config.home.homeDirectory}/GithubProjects/ManganoConsulting/".path =
+        "${config.xdg.configHome}/git/work.gitconfig";
     };
   };
+
+  # Placeholder for work-specific Git config; edit to set your work email.
+  xdg.configFile."git/work.gitconfig".text = ''
+    # Work Git config (applies only under GithubProjects/ManganoConsulting)
+    # Uncomment and set your work email:
+    # [user]
+    #   email = you@company.example
+  '';
 
   # SSH managed declaratively
   programs.ssh = {
