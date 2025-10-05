@@ -22,6 +22,7 @@
     ./modules/core/hyprland.nix
     ./modules/core/mozillavpn.nix
     ./modules/core/cloudflare-warp.nix
+    ./modules/core/vpn-killswitch.nix
     ./modules/core/git-repo-manager.nix
   ];
 }
