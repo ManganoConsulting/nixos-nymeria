@@ -300,6 +300,9 @@
     enableZshIntegration = true;
   };
 
+  # Autostart swaync (Sway Notification Center) as a user service
+  services.swaync.enable = true;
+
   # Manage Ghostty terminal config
   xdg.configFile."ghostty/config".text = ''
     # Ghostty config managed by Home Manager
