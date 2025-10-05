@@ -34,4 +34,9 @@
 
   # Power management DBus service required by some apps (e.g., Mozilla VPN UI)
   services.upower.enable = true;
+
+  # Git repository manager service
+  services.git-repo-manager.enable = true;
+  services.git-repo-manager.user = "matthew";
+  services.git-repo-manager.syncOnBoot = true;
 }
