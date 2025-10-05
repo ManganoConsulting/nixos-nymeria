@@ -182,6 +182,35 @@
       push.autoSetupRemote = true;
     };
   };
+
+  # SSH managed declaratively
+  programs.ssh = {
+    enable = true;
+    includes = [ "~/.ssh/config.d/*.conf" ];
+    matchBlocks = {
+      "github.com" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = [ "${config.home.homeDirectory}/.ssh/github_id" ];
+      };
+      "gitlab.com" = {
+        hostname = "gitlab.com";
+        user = "git";
+        identityFile = [ "${config.home.homeDirectory}/.ssh/glab" ];
+      };
+    };
+    extraConfig = ''
+      AddKeysToAgent yes
+      ServerAliveInterval 60
+      ServerAliveCountMax 3
+      ControlMaster auto
+      ControlPath ~/.ssh/cm-%r@%h:%p
+      ControlPersist 10m
+    '';
+  };
+
+  # Ensure ~/.ssh/config.d exists (without committing secrets)
+  home.file.".ssh/config.d/.keep".text = "";
   
   # Enhanced directory navigation and environment management
   programs.direnv.enable = true;
@@ -213,6 +242,15 @@
       "x-scheme-handler/unknown" = [ "vivaldi-stable.desktop" ];
     };
   };
+
+  # Secrets management (sops-nix): optional, guarded if file exists
+  sops = if builtins.pathExists ../../secrets/home.yaml then {
+    defaultSopsFile = ../../secrets/home.yaml;
+    # Use an Age key file in your home directory
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+    # Example secret materialized to a file for CLI consumption
+    secrets.cloudflare_token.path = "${config.home.homeDirectory}/.config/cloudflare/token";
+  } else {};
 
   # Match NixOS release used for this home config
   my.gitRepos = {
