@@ -251,6 +251,7 @@
   # SSH managed declaratively
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     includes = [ "~/.ssh/config.d/*.conf" ];
     matchBlocks = {
       "github.com" = {
@@ -263,6 +264,7 @@
         user = "git";
         identityFile = [ "${config.home.homeDirectory}/.ssh/glab" ];
       };
+      "*" = {};
     };
     extraConfig = ''
       AddKeysToAgent yes
@@ -276,6 +278,9 @@
 
   # Ensure ~/.ssh/config.d exists (without committing secrets)
   home.file.".ssh/config.d/.keep".text = "";
+
+  # Start OpenSSH agent for key caching
+  services.ssh-agent.enable = true;
   
   # Enhanced directory navigation and environment management
   programs.direnv.enable = true;
