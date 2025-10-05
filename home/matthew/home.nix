@@ -248,8 +248,6 @@
     defaultSopsFile = ../../secrets/home.yaml;
     # Use an Age key file in your home directory
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
-    # Example secret materialized to a file for CLI consumption
-    secrets.cloudflare_token.path = "${config.home.homeDirectory}/.config/cloudflare/token";
   } else {};
 
   # Match NixOS release used for this home config
