@@ -22,5 +22,8 @@
     cilium-cli
     flux
     virt-manager
+    # Cloud CLI tools
+    google-cloud-sdk
+    awscli2
   ];
 }
