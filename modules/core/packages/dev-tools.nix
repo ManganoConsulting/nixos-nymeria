@@ -30,5 +30,7 @@
     python312Packages.pip
     python312Packages.virtualenv
     python312Packages.setuptools
+    # Wave terminal
+    waveterm
   ];
 }
