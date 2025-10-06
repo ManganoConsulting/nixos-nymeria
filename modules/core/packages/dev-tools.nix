@@ -25,5 +25,10 @@
     # Cloud CLI tools
     google-cloud-sdk
     awscli2
+    # Python development environment
+    python312
+    python312Packages.pip
+    python312Packages.virtualenv
+    python312Packages.setuptools
   ];
 }
