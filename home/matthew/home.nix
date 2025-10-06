@@ -115,7 +115,6 @@
       # snippet Warp shows and place it below. Example placeholder only:
       # [ -n "$WARP_IS_REMOTE" ] && true
     '';
-
   };
 
   # Starship prompt

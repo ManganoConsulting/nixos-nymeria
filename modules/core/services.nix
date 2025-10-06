@@ -5,7 +5,7 @@
 }: {
   services.openssh.enable = true;
   # Keep SSH on the non-standard port you chose
-  services.openssh.ports = [ 3965 ];
+  services.openssh.ports = [3965];
   services.openssh.settings = {
     PasswordAuthentication = false;
     KbdInteractiveAuthentication = false;
