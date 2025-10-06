@@ -13,6 +13,7 @@
     ./core/system.nix
     ./core/sound.nix
     ./core/fonts.nix
+    ./core/neovim.nix
     ./core/virtualisation.nix
     ./core/git-repo-manager.nix
   ];
