@@ -18,6 +18,10 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Dev hygiene: pre-commit hooks
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -28,6 +32,7 @@
     sops-nix,
     nixos-hardware,
     disko,
+    pre-commit-hooks,
     ...
   }: let
     system = "x86_64-linux";
@@ -86,17 +91,53 @@
 
     # per-system outputs
     devShells.${system}.default = pkgs.mkShell {
-      buildInputs = with pkgs; [git sops age just statix deadnix alejandra];
-    };
-    formatter.${system} = pkgs.alejandra;
-    checks.${system}.default = pkgs.stdenv.mkDerivation {
-      name = "lint";
-      src = ./.;
-      buildCommand = ''
-        ${pkgs.statix}/bin/statix check .
-        ${pkgs.deadnix}/bin/deadnix --fail .
-        mkdir -p $out
+      buildInputs = with pkgs; [
+        git
+        sops
+        age
+        just
+        statix
+        deadnix
+        alejandra
+        nil
+        nix-output-monitor
+        pre-commit
+      ];
+      shellHook = ''
+        pre-commit install --install-hooks || true
+        echo "Dev shell ready: nix fmt, statix, deadnix, pre-commit hooks installed."
       '';
+    };
+
+    formatter.${system} = pkgs.alejandra;
+
+    # Checks: lint, pre-commit, and host builds
+    checks.${system} = {
+      default = pkgs.stdenv.mkDerivation {
+        name = "lint";
+        src = ./.;
+        buildCommand = ''
+          ${pkgs.statix}/bin/statix check .
+          ${pkgs.deadnix}/bin/deadnix --fail .
+          mkdir -p $out
+        '';
+      };
+
+      nymeria = self.nixosConfigurations.nymeria.config.system.build.toplevel;
+      vm = self.nixosConfigurations.vm.config.system.build.vm;
+    };
+
+    # Optional: Nix-native pre-commit runner (invoked via nix build)
+    packages.${system}.pre-commit-check = pre-commit-hooks.lib.${system}.run {
+      src = ./.;
+      hooks = {
+        alejandra.enable = true;
+        statix.enable = true;
+        deadnix.enable = true;
+        shellcheck.enable = true;
+        shfmt.enable = true;
+        markdownlint.enable = true;
+      };
     };
   };
 }
