@@ -21,7 +21,7 @@ jobs:
           name: mangano
           authToken: ${{ env.CACHIX_AUTH_TOKEN }}
       - name: Format check
-        run: nix fmt -- --check
+        run: nix fmt -- --check .
       - name: Flake checks
         run: nix flake check --print-build-logs
       - name: Pre-commit hooks (optional)
