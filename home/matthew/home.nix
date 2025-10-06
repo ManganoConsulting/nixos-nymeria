@@ -158,6 +158,10 @@
       python = {
         symbol = "🐍 ";
         style = "bold yellow";
+        detect_extensions = ["py" "pyc" "pyo" "pyd" "pyw" "pyi"];
+        detect_files = ["requirements.txt" "setup.py" "pyproject.toml" "Pipfile" ".python-version" "tox.ini"];
+        detect_folders = ["venv" ".venv" "env" ".env" "virtualenv"];
+        format = "via [$symbol$pyenv_prefix($version) (\\($virtualenv\\)) ]($style)";
       };
 
       rust = {
