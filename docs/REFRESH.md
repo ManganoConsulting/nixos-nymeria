@@ -39,10 +39,14 @@ sudo nixos-install --flake .#nymeria
 ```
 
 ## VM smoke test
-You can build a QEMU VM from the nymeria config (useful for quick checks):
+Fast local smoke test using the dedicated VM config:
 ```bash
-nix build .#nixosConfigurations.nymeria.config.system.build.vm
+# build & run
+nix build .#nixosConfigurations.vm.config.system.build.vm
 ./result/bin/run-nixos-vm
+
+# or via Just
+just vm
 ```
 
 ## Secrets (sops-nix)
@@ -58,12 +62,18 @@ nix build .#nixosConfigurations.nymeria.config.system.build.vm
 
 ## Useful flake commands
 ```bash
-# Lint (defined in flake checks)
-nix flake check
+# Lint & build checks
+nix flake check --print-build-logs
 
-# Dev shell with tools (statix, deadnix, alejandra, etc.)
+# Dev shell with tools (alejandra, statix, deadnix, nil, nom, pre-commit)
 nix develop
 
 # Format all Nix files via flake formatter
 nix fmt .
+```
+
+## Pre-commit hooks
+When entering the dev shell, pre-commit hooks are auto-installed. To run all hooks manually:
+```bash
+nix build .#checks.x86_64-linux.pre-commit
 ```
