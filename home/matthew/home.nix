@@ -108,7 +108,14 @@
       bindkey '^R' fzf-history-widget
       bindkey '^T' fzf-file-widget
       bindkey '^[c' fzf-cd-widget
+
+      # Warp Auto-Warpify hook (persist the snippet Warp suggests)
+      # Paste the Warp-provided auto-warpify snippet here so it persists across rebuilds.
+      # After you successfully Warpify this host from your client, copy the
+      # snippet Warp shows and place it below. Example placeholder only:
+      # [ -n "$WARP_IS_REMOTE" ] && true
     '';
+
   };
 
   # Starship prompt

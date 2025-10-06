@@ -18,6 +18,14 @@
           style = "dark";
         };
 
+        # Extra plugins not covered by built-in NVF modules
+        extraPlugins = with pkgs.vimPlugins; {
+          toggleterm = {
+            package = toggleterm-nvim;
+            setup = "require('toggleterm').setup {}";
+          };
+        };
+
         # Core functionality
         statusline.lualine.enable = true;
         telescope.enable = true;
@@ -68,6 +76,54 @@
             action = ":Neotree focus<CR>";
             silent = true;
             desc = "Neotree Focus";
+          }
+
+          # ToggleTerm: floating terminal
+          {
+            key = "<leader>`";
+            mode = ["n"];
+            action = ":ToggleTerm direction=float<CR>";
+            silent = true;
+            desc = "ToggleTerm (float)";
+          }
+          {
+            key = "<leader>`";
+            mode = ["t"];
+            action = "<C-\\><C-n>:ToggleTerm direction=float<CR>";
+            silent = true;
+            desc = "ToggleTerm (float)";
+          }
+
+          # ToggleTerm: horizontal split
+          {
+            key = "<leader>th";
+            mode = ["n"];
+            action = ":ToggleTerm direction=horizontal size=15<CR>";
+            silent = true;
+            desc = "ToggleTerm (horizontal)";
+          }
+          {
+            key = "<leader>th";
+            mode = ["t"];
+            action = "<C-\\><C-n>:ToggleTerm direction=horizontal size=15<CR>";
+            silent = true;
+            desc = "ToggleTerm (horizontal)";
+          }
+
+          # ToggleTerm: vertical split
+          {
+            key = "<leader>tv";
+            mode = ["n"];
+            action = ":ToggleTerm direction=vertical size=80<CR>";
+            silent = true;
+            desc = "ToggleTerm (vertical)";
+          }
+          {
+            key = "<leader>tv";
+            mode = ["t"];
+            action = "<C-\\><C-n>:ToggleTerm direction=vertical size=80<CR>";
+            silent = true;
+            desc = "ToggleTerm (vertical)";
           }
         ];
       };
