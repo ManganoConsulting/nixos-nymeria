@@ -1,13 +1,15 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Enable PipeWire
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = true;  # Enable JACK support
+    jack.enable = true; # Enable JACK support
   };
 
   # Ensure PipeWire replaces PulseAudio
@@ -18,4 +20,3 @@
   hardware.bluetooth.package = pkgs.bluez;
   services.blueman.enable = true;
 }
-

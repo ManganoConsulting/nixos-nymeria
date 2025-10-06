@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Recommended for Snap confinement
   security.apparmor.enable = true;
 

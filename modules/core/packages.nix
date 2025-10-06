@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./packages/core.nix
     ./packages/dev-tools.nix
@@ -11,4 +13,3 @@
 
   nixpkgs.config.allowUnfree = true;
 }
-

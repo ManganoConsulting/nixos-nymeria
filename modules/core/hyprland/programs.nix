@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   wayland.windowManager.hyprland.settings = {
     "$terminal" = "ghostty";
     "$fileManager" = "dolphin";

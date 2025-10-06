@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../../modules/core/hyprland/appearance.nix
     ../../modules/core/hyprland/animations.nix
@@ -14,33 +18,33 @@
 
   home.username = "matthew";
   home.homeDirectory = "/home/matthew";
-  
+
   # Packages for enhanced shell experience
   home.packages = with pkgs; [
     # Modern replacements for common commands
-    eza          # Modern replacement for ls
-    bat          # Modern replacement for cat
-    ripgrep      # Modern replacement for grep (rg)
-    fd           # Modern replacement for find
-    fzf          # Fuzzy finder
-    zoxide       # Smart directory jumper (z command)
-    
+    eza # Modern replacement for ls
+    bat # Modern replacement for cat
+    ripgrep # Modern replacement for grep (rg)
+    fd # Modern replacement for find
+    fzf # Fuzzy finder
+    zoxide # Smart directory jumper (z command)
+
     # Additional useful tools
-    htop         # Process monitor
-    tree         # Directory tree viewer
-    wget         # File downloader
-    curl         # HTTP client
-    jq           # JSON processor
+    htop # Process monitor
+    tree # Directory tree viewer
+    wget # File downloader
+    curl # HTTP client
+    jq # JSON processor
 
     # Notifications
-    libnotify                # provides notify-send
-    swaynotificationcenter   # swaync + swaync-client
-    
+    libnotify # provides notify-send
+    swaynotificationcenter # swaync + swaync-client
+
     # Development tools
-    git          # Version control
-    gh           # GitHub CLI
-    delta        # Git diff pager
-    ghostty      # Terminal emulator
+    git # Version control
+    gh # GitHub CLI
+    delta # Git diff pager
+    ghostty # Terminal emulator
 
     # Kubernetes/Helm tooling
     kubectl
@@ -49,11 +53,11 @@
     kubectx
     kustomize
     stern
-    
+
     # System utilities
-    neofetch     # System info
-    zip          # Archive tool
-    unzip        # Archive tool
+    neofetch # System info
+    zip # Archive tool
+    unzip # Archive tool
   ];
 
   # Enable Hyprland config under Home Manager
@@ -65,7 +69,7 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    
+
     # Shell aliases for better experience
     shellAliases = {
       ll = "eza -la --icons";
@@ -75,12 +79,12 @@
       find = "fd";
       tree = "eza --tree --icons";
     };
-    
-    # Additional zsh configuration  
+
+    # Additional zsh configuration
     initContent = ''
       # Load completions early
       autoload -U compinit && compinit
-      
+
       # Better history settings
       setopt EXTENDED_HISTORY
       setopt SHARE_HISTORY
@@ -94,19 +98,19 @@
       setopt HIST_SAVE_NO_DUPS
       setopt HIST_REDUCE_BLANKS
       setopt HIST_VERIFY
-      
+
       # Better completion
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
       zstyle ':completion:*' menu select
-      
+
       # Fuzzy finding keybindings
       bindkey '^R' fzf-history-widget
       bindkey '^T' fzf-file-widget
       bindkey '^[c' fzf-cd-widget
     '';
   };
-  
+
   # Starship prompt
   programs.starship = {
     enable = true;
@@ -114,23 +118,23 @@
     settings = {
       format = "$all$character";
       add_newline = false;
-      
+
       character = {
         success_symbol = "[➜](bold green)";
         error_symbol = "[➜](bold red)";
       };
-      
+
       directory = {
         truncation_length = 3;
         truncation_symbol = "…/";
         style = "bold cyan";
       };
-      
+
       git_branch = {
         symbol = "🌱 ";
         style = "bold purple";
       };
-      
+
       git_status = {
         ahead = "⇡\${count}";
         diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
@@ -138,29 +142,29 @@
         deleted = "x";
         style = "bold red";
       };
-      
+
       nix_shell = {
         symbol = "❄️ ";
         style = "bold blue";
       };
-      
+
       python = {
         symbol = "🐍 ";
         style = "bold yellow";
       };
-      
+
       rust = {
         symbol = "🦀 ";
         style = "bold red";
       };
-      
+
       nodejs = {
         symbol = "⬢ ";
         style = "bold green";
       };
     };
   };
-  
+
   # Fuzzy finder
   programs.fzf = {
     enable = true;
@@ -178,7 +182,7 @@
       "hl+" = "#83a598";
     };
   };
-  
+
   # Better Git integration
   programs.git = {
     enable = true;
@@ -219,8 +223,7 @@
       commit.gpgsign = true;
       gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
 
-      includeIf."gitdir:${config.home.homeDirectory}/GithubProjects/ManganoConsulting/".path =
-        "${config.xdg.configHome}/git/work.gitconfig";
+      includeIf."gitdir:${config.home.homeDirectory}/GithubProjects/ManganoConsulting/".path = "${config.xdg.configHome}/git/work.gitconfig";
     };
   };
 
@@ -231,7 +234,7 @@
   '';
 
   # Generate allowed_signers from your SSH public key; used for local verification
-  home.activation.sshAllowedSigners = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.sshAllowedSigners = lib.hm.dag.entryAfter ["writeBoundary"] ''
     set -euo pipefail
     conf_dir="$HOME/.config/git"
     pub="$HOME/.ssh/github_id.pub"
@@ -260,17 +263,17 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    includes = [ "~/.ssh/config.d/*.conf" ];
+    includes = ["~/.ssh/config.d/*.conf"];
     matchBlocks = {
       "github.com" = {
         hostname = "github.com";
         user = "git";
-        identityFile = [ "${config.home.homeDirectory}/.ssh/github_id" ];
+        identityFile = ["${config.home.homeDirectory}/.ssh/github_id"];
       };
       "gitlab.com" = {
         hostname = "gitlab.com";
         user = "git";
-        identityFile = [ "${config.home.homeDirectory}/.ssh/glab" ];
+        identityFile = ["${config.home.homeDirectory}/.ssh/glab"];
       };
       "*" = {};
     };
@@ -289,11 +292,11 @@
 
   # Start OpenSSH agent for key caching
   services.ssh-agent.enable = true;
-  
+
   # Enhanced directory navigation and environment management
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
-  
+
   # Better file manager integration (if using a file manager)
   programs.zoxide = {
     enable = true;
@@ -341,12 +344,12 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "text/html" = [ "vivaldi-stable.desktop" ];
-      "x-scheme-handler/http" = [ "vivaldi-stable.desktop" ];
-      "x-scheme-handler/https" = [ "vivaldi-stable.desktop" ];
+      "text/html" = ["vivaldi-stable.desktop"];
+      "x-scheme-handler/http" = ["vivaldi-stable.desktop"];
+      "x-scheme-handler/https" = ["vivaldi-stable.desktop"];
       # optional but helpful
-      "x-scheme-handler/about" = [ "vivaldi-stable.desktop" ];
-      "x-scheme-handler/unknown" = [ "vivaldi-stable.desktop" ];
+      "x-scheme-handler/about" = ["vivaldi-stable.desktop"];
+      "x-scheme-handler/unknown" = ["vivaldi-stable.desktop"];
     };
   };
 
@@ -365,11 +368,14 @@
   };
 
   # Secrets management (sops-nix): optional, guarded if file exists
-  sops = if builtins.pathExists ../../secrets/home.yaml then {
-    defaultSopsFile = ../../secrets/home.yaml;
-    # Use an Age key file in your home directory
-    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
-  } else {};
+  sops =
+    if builtins.pathExists ../../secrets/home.yaml
+    then {
+      defaultSopsFile = ../../secrets/home.yaml;
+      # Use an Age key file in your home directory
+      age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+    }
+    else {};
 
   # Match NixOS release used for this home config
   my.gitRepos = {

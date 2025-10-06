@@ -13,14 +13,40 @@
     # Secrets management
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Optional hardware profiles and declarative partitioning
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nvf, home-manager, sops-nix, ... }: {
+  outputs = {
+    self,
+    nixpkgs,
+    nvf,
+    home-manager,
+    sops-nix,
+    nixos-hardware,
+    disko,
+    ...
+  }: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {inherit system;};
+  in {
     nixosConfigurations.nymeria = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      system = system;
 
       modules = [
-        ./configuration.nix
+        ./hosts/nymeria/hardware-configuration.nix
+        ./modules/common.nix
+        ./modules/desktop.nix
+        ./hosts/nymeria/config.nix
+
+        # Optional imports (uncomment and adjust as needed):
+        # nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
+        # disko.nixosModules.disko
+
+        # Existing modules preserved
         nvf.nixosModules.default
         sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
@@ -30,10 +56,25 @@
           # Back up conflicting files instead of failing activation
           home-manager.backupFileExtension = "backup";
           # Make sops-nix options available to Home Manager
-          home-manager.sharedModules = [ sops-nix.homeManagerModules.sops ];
-          home-manager.users.matthew = import ./home/matthew/home.nix;
+          home-manager.sharedModules = [sops-nix.homeManagerModules.sops];
+          home-manager.users.matthew = import ./home/matthew.nix;
         }
       ];
+    };
+
+    # per-system outputs
+    devShells.${system}.default = pkgs.mkShell {
+      buildInputs = with pkgs; [git sops age just statix deadnix alejandra];
+    };
+    formatter.${system} = pkgs.alejandra;
+    checks.${system}.default = pkgs.stdenv.mkDerivation {
+      name = "lint";
+      src = ./.;
+      buildCommand = ''
+        ${pkgs.statix}/bin/statix check .
+        ${pkgs.deadnix}/bin/deadnix --fail .
+        mkdir -p $out
+      '';
     };
   };
 }

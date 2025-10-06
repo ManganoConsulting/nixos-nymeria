@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   vpnToggle = pkgs.writeShellScriptBin "vpn-toggle" ''
     #!/usr/bin/env bash
     set -euo pipefail
@@ -66,17 +69,16 @@ let
 
     echo "Mozilla VPN: $status"
   '';
-
 in {
   # Ensure mozillavpn is available system-wide and include helper scripts
-  environment.systemPackages = [ pkgs.mozillavpn vpnToggle vpnStatus ];
+  environment.systemPackages = [pkgs.mozillavpn vpnToggle vpnStatus];
 
   # Root daemon for Mozilla VPN
   systemd.services.mozillavpn = {
     description = "Mozilla VPN Linux Daemon";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
+    wantedBy = ["multi-user.target"];
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
     serviceConfig = {
       Type = "simple";
       ExecStart = "${pkgs.mozillavpn}/bin/mozillavpn linuxdaemon";

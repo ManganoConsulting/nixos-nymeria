@@ -1,7 +1,7 @@
 {
   # Git repositories configuration
   # This file defines all git repositories that should be managed by NixOS
-  
+
   gitRepositories = {
     # Analysis repositories (worktrees of the same repo)
     analysis = {

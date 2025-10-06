@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.hyprland = {
     enable = true;
   };
@@ -14,12 +16,12 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
     TERMINAL = "ghostty";
-    
+
     # Font rendering improvements for Wayland
     QT_QPA_PLATFORM = "wayland";
     GDK_BACKEND = "wayland";
     CLUTTER_BACKEND = "wayland";
-    
+
     # Better font rendering (adjusted for high DPI display)
     QT_FONT_DPI = "162"; # Actual DPI of your display
     GDK_DPI_SCALE = "1.0";
@@ -28,7 +30,7 @@
     # Additional font rendering variables
     FREETYPE_PROPERTIES = "truetype:interpreter-version=40";
     QT_FONTCONFIG = "1";
-    
+
     # Force some apps to use Wayland (when possible)
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     MOZ_ENABLE_WAYLAND = "1";
@@ -43,7 +45,7 @@
   # Ensure FileChooser and others are provided by GTK backend while using Hyprland
   xdg.portal.config = {
     common = {
-      default = [ "hyprland" "gtk" ];
+      default = ["hyprland" "gtk"];
     };
   };
   xdg.portal.xdgOpenUsePortal = true;

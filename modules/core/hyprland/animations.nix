@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   wayland.windowManager.hyprland.settings.animations = {
     enabled = true;
     bezier = [
@@ -20,4 +22,3 @@
     ];
   };
 }
-
