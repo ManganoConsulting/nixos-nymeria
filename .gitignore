@@ -1,0 +1,9 @@
+result
+result-*
+.direnv/
+.devenv/
+*.qcow2
+*.drv
+*.swp
+.envrc
+.sops.yaml~

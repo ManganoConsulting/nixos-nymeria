@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   system.stateVersion = "25.11";
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Use the latest kernel from nixpkgs
   boot.kernelPackages = pkgs.linuxPackages_latest;

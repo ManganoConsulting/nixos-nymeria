@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   # Helper to switch to Cloudflare WARP (and stop Mozilla VPN to avoid conflicts)
   warpOn = pkgs.writeShellScriptBin "warp-on" ''
     #!/usr/bin/env bash
@@ -43,18 +46,17 @@ let
 
     echo "Mozilla VPN service started. Use 'mozillavpn activate' to connect if needed."
   '';
-
 in {
   # Install Cloudflare WARP (provides warp-cli and warp-svc) and helper scripts
-  environment.systemPackages = [ pkgs.cloudflare-warp warpOn warpOff ];
+  environment.systemPackages = [pkgs.cloudflare-warp warpOn warpOff];
 
   # Define the warp-svc daemon as a systemd unit, disabled by default
   systemd.services.warp-svc = {
     description = "Cloudflare WARP Linux Daemon";
     # Not enabled by default; start manually with: sudo systemctl start warp-svc
-    wantedBy = [ ];
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
+    wantedBy = [];
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
     serviceConfig = {
       Type = "simple";
       ExecStart = "${pkgs.cloudflare-warp}/bin/warp-svc";
