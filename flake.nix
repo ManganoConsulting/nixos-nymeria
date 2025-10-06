@@ -62,6 +62,28 @@
       ];
     };
 
+    # Minimal VM configuration for smoke tests
+    nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
+      system = system;
+      modules = [
+        nvf.nixosModules.default
+        ./modules/common.nix
+        ./modules/vm-guest.nix
+        {
+          networking.hostName = "vm";
+          # A minimal root filesystem to satisfy NixOS assertions for VM builds
+          fileSystems."/" = {
+            device = "nodev";
+            fsType = "tmpfs";
+            options = ["mode=0755"];
+          };
+          # No bootloader needed for qemu-vm builder
+          boot.loader.grub.enable = false;
+          boot.loader.systemd-boot.enable = false;
+        }
+      ];
+    };
+
     # per-system outputs
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [git sops age just statix deadnix alejandra];
