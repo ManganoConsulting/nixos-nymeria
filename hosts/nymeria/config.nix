@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   # Host-specific toggles and imports
@@ -15,8 +16,10 @@
   # Example: enable runtime toggle script for VPN kill switch (declarative kill switch remains disabled by default)
   # my.vpnKillSwitch.enable = false;
 
-  # Example secret mapping (uncomment after you create and encrypt secrets/example.yaml)
-  # sops.secrets."example-password".sopsFile = ../../secrets/example.yaml;
+  # Example secret mapping guarded by file existence (non-breaking placeholder)
+  sops.secrets."example-password" = lib.mkIf (builtins.pathExists ../../secrets/example.yaml) {
+    sopsFile = ../../secrets/example.yaml;
+  };
   # Usage example:
   # services.postgresql = {
   #   enable = true;
