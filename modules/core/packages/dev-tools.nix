@@ -22,6 +22,8 @@
     cilium-cli
     flux
     virt-manager
+    # Container tooling
+    docker
     # Cloud CLI tools
     google-cloud-sdk
     awscli2

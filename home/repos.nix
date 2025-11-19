@@ -188,4 +188,46 @@
     branch = "main";
     worktrees = [];
   }
+  {
+    name = "compliance-copilot";
+    path = "/home/matthew/GithubProjects/compliance-copilot";
+    url = "https://github.com/ManganoConsulting/compliance-copilot.git";
+    branch = "main";
+    worktrees = [];
+  }
+  {
+    name = "controlstackai-infra";
+    path = "/home/matthew/GithubProjects/controlstackai-infra";
+    url = "https://github.com/ManganoConsulting/controlstackai-infra.git";
+    branch = "main";
+    worktrees = [];
+  }
+  {
+    name = "flight-library";
+    path = "/home/matthew/GithubProjects/flight-library";
+    url = "https://github.com/ControlStackAI-ACD/flight-library.git";
+    branch = "main";
+    worktrees = [];
+  }
+  {
+    name = "FlightControl";
+    path = "/home/matthew/GithubProjects/FlightControl";
+    url = "https://github.com/ControlStackAI-ACD/FlightControl.git";
+    branch = "main";
+    worktrees = [];
+  }
+  {
+    name = "FlightControl-V3";
+    path = "/home/matthew/GithubProjects/FlightControl-V3";
+    url = "https://github.com/ManganoConsulting/FlightControl-V3.git";
+    branch = "main";
+    worktrees = [];
+  }
+  {
+    name = "FlightDynamics";
+    path = "/home/matthew/GithubProjects/FlightDynamics";
+    url = "https://github.com/ControlStackAI-ACD/FlightDynamics.git";
+    branch = "main";
+    worktrees = [];
+  }
 ]

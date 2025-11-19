@@ -6,7 +6,7 @@
   users.users.matthew = {
     isNormalUser = true;
     description = "Matthew";
-    extraGroups = ["networkmanager" "wheel" "libvirtd"];
+    extraGroups = ["networkmanager" "wheel" "libvirtd" "docker"];
     shell = pkgs.zsh;
     # Authorize SSH public keys declaratively (Terminust phone key)
     openssh.authorizedKeys.keys = [
