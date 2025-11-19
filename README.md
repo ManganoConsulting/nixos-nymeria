@@ -14,6 +14,28 @@ A golden flake for my laptop host "nymeria" with:
 
 ---
 
+## Status / Roadmap
+
+**Goal:** A golden NixOS flake for the _nymeria_ laptop that works identically on hardware and QEMU VMs, with declarative disk layout (disko), sops-nix secrets, Home Manager user environment, and a near-automatic install/upgrade flow.
+
+**Completed**
+- [x] Flake structure with hardware + VM configs
+- [x] sops-nix for secrets
+- [x] Home Manager as user environment
+- [x] Neovim (NVF) with plugins + LSPs
+- [x] SSH hardening + Tailscale
+- [x] GC + optimisation timers
+
+**In Progress**
+- [ ] Integrate `disko.nixosModules.disko` into the host build
+- [ ] Create a true “installer” flake output or `just install` target
+- [ ] Make Rust + Node toolchains fully declarative
+- [ ] Add laptop-specific power management (tlp or power-profiles-daemon)
+- [ ] Add automated system upgrades (`system.autoUpgrade` or a service)
+- [ ] Split hardware-heavy services out of `modules/common.nix` for cleaner VM builds
+
+---
+
 ## Features
 
 - NixOS with flakes enabled
