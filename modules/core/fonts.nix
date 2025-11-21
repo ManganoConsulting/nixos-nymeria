@@ -2,7 +2,7 @@
   fonts = {
     packages = with pkgs; [
       # Emoji and international fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       noto-fonts-cjk-sans
 
       # Icon fonts
@@ -19,7 +19,7 @@
       hack-font # Warp's default font
       jetbrains-mono # Another excellent terminal font
       cascadia-code # Microsoft's terminal font
-      ubuntu_font_family # Ubuntu fonts
+      ubuntu-classic # Ubuntu fonts
       dejavu_fonts # DejaVu fonts
 
       # Fallback fonts

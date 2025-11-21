@@ -24,6 +24,10 @@
 
     jq=${pkgs.jq}/bin/jq
     git=${pkgs.git}/bin/git
+    ssh_bin=${pkgs.openssh}/bin/ssh
+
+    # Ensure git uses a known-good ssh binary even in minimal activation environments
+    export GIT_SSH="$ssh_bin"
 
     echo '${reposJson}' | "$jq" -c '.[]' | while IFS= read -r repo; do
       path=$(echo "$repo" | "$jq" -r '.path')
