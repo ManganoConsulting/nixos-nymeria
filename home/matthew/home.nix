@@ -196,11 +196,28 @@
   # Better Git integration
   programs.git = {
     enable = true;
-    userName = "Matthew Mangano";
-    userEmail = "matthew.mangano@gmail.com";
 
-    delta = {
-      enable = true;
+    # New-style configuration API
+    settings = {
+      user = {
+        name = "Matthew Mangano";
+        email = "matthew.mangano@gmail.com";
+      };
+
+      init.defaultBranch = "main";
+      pull.rebase = true;
+      push.autoSetupRemote = true;
+      fetch.prune = true;
+      color.ui = "auto";
+      diff.colorMoved = "zebra";
+
+      # SSH commit signing (recommended)
+      gpg.format = "ssh";
+      user.signingkey = "${config.home.homeDirectory}/.ssh/github_id.pub";
+      commit.gpgsign = true;
+      gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
+
+      includeIf."gitdir:${config.home.homeDirectory}/GithubProjects/ManganoConsulting/".path = "${config.xdg.configHome}/git/work.gitconfig";
     };
 
     # Global gitignore patterns
@@ -218,23 +235,12 @@
       ".idea"
       ".vscode"
     ];
+  };
 
-    extraConfig = {
-      init.defaultBranch = "main";
-      pull.rebase = true;
-      push.autoSetupRemote = true;
-      fetch.prune = true;
-      color.ui = "auto";
-      diff.colorMoved = "zebra";
-
-      # SSH commit signing (recommended)
-      gpg.format = "ssh";
-      user.signingkey = "${config.home.homeDirectory}/.ssh/github_id.pub";
-      commit.gpgsign = true;
-      gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
-
-      includeIf."gitdir:${config.home.homeDirectory}/GithubProjects/ManganoConsulting/".path = "${config.xdg.configHome}/git/work.gitconfig";
-    };
+  # Configure delta using the dedicated module
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
   };
 
   # Placeholder for work-specific Git config; edit to set your work email.
