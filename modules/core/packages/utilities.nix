@@ -19,5 +19,11 @@
 
     # VPN client
     mozillavpn
+
+    # Wayland-native screenshot and screen recording
+    grim
+    slurp
+    swappy
+    wl-screenrec
   ];
 }

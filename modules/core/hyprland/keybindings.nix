@@ -93,6 +93,13 @@
       "$mainMod SHIFT, V, exec, vpn-toggle"
       "$mainMod CTRL, V, exec, vpn-status notify"
 
+      # Screenshots
+      "$mainMod, Print, exec, screenshot-region"
+      "$mainMod SHIFT, Print, exec, screenshot-full"
+
+      # Screen recording (toggle)
+      "$mainMod, F9, exec, screenrecord-toggle"
+
       # Sway Notification Center controls (no taskbar needed)
       "$mainMod, N, exec, swaync-client --toggle-panel"
       "$mainMod CTRL, N, exec, swaync-client --toggle-dnd"

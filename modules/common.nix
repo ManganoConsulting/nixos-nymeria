@@ -16,5 +16,6 @@
     ./core/neovim.nix
     ./core/virtualisation.nix
     ./core/git-repo-manager.nix
+    ./core/screenshots.nix
   ];
 }
