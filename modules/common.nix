@@ -27,9 +27,10 @@
       warp-terminal = prev.warp-terminal.overrideAttrs (old: {
         version = "0.2025.11.19.08.12.stable_03";
 
+        # Match nixpkgs' packaging, but pin to this newer upstream version.
         src = prev.fetchurl {
-          url = "<FILL_IN_WARP_DEB_URL_HERE>";
-          hash = "<FILL_IN_sha256_FROM_nix_store_prefetch-file>";
+          url = "https://releases.warp.dev/stable/v0.2025.11.19.08.12.stable_03/warp-terminal-v0.2025.11.19.08.12.stable_03-1-x86_64.pkg.tar.zst";
+          hash = "sha256-OOgDy2TwYPCn/aEkh2Bv8m9l/XxqealOtihiO9PppBU=";
         };
       });
     })
