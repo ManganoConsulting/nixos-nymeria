@@ -20,8 +20,9 @@
   ];
 
   # Override warp-terminal to a specific upstream build.
-  # TODO: replace url/hash with the .deb URL and sha256 for
-  #       v0.2025.11.19.08.12.stable_03 (see README instructions).
+  # To update:
+  #   1) Run:  just update-warp <new-version>
+  #   2) Paste the printed version/url/hash block into this overlay.
   nixpkgs.overlays = [
     (final: prev: {
       warp-terminal = prev.warp-terminal.overrideAttrs (old: {
