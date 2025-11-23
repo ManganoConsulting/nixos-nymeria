@@ -17,6 +17,7 @@
     ./core/virtualisation.nix
     ./core/git-repo-manager.nix
     ./core/screenshots.nix
+    ./core/ai-tools.nix
   ];
 
   # Override warp-terminal to a specific upstream build.

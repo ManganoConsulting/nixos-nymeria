@@ -7,3 +7,6 @@ result-*
 *.swp
 .envrc
 .sops.yaml~
+
+# Local environment with API keys (do not commit)
+.env
