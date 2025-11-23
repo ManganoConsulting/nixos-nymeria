@@ -18,7 +18,7 @@
     # Python + Hugging Face helpers for local / scripted use
     python312
     python312Packages.transformers
-    python312Packages.huggingface_hub
+    python312Packages.huggingface-hub
 
     # Local LLM backend
     ollama
