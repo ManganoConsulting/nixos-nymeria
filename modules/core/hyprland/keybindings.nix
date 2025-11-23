@@ -104,6 +104,9 @@
       "$mainMod, N, exec, swaync-client --toggle-panel"
       "$mainMod CTRL, N, exec, swaync-client --toggle-dnd"
       "$mainMod SHIFT, N, exec, swaync-client --close-panel"
+
+      # Lock Screen
+      "$mainMod ALT, L, exec, hyprlock"
     ];
 
     # Mouse bindings for window management

@@ -8,6 +8,8 @@
     ../../modules/core/hyprland/appearance.nix
     ../../modules/core/hyprland/animations.nix
     ../../modules/core/hyprland/autostart.nix
+    ../../modules/core/hyprland/hyprlock.nix
+    ../../modules/core/hyprland/hyprpaper.nix
     ../../modules/core/hyprland/input.nix
     ../../modules/core/hyprland/keybindings.nix
     ../../modules/core/hyprland/monitors.nix
@@ -39,6 +41,8 @@
     # Notifications
     libnotify # provides notify-send
     swaynotificationcenter # swaync + swaync-client
+    hyprlock
+    hyprpaper
 
     # Development tools
     git # Version control

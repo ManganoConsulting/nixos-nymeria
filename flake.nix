@@ -38,14 +38,14 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
   in {
-    nixosConfigurations.nymeria = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.controlstackos = nixpkgs.lib.nixosSystem {
       system = system;
 
       modules = [
-        ./hosts/nymeria/hardware-configuration.nix
+        ./hosts/controlstackos/hardware-configuration.nix
         ./modules/common.nix
         ./modules/desktop.nix
-        ./hosts/nymeria/config.nix
+        ./hosts/controlstackos/config.nix
 
         # Optional imports (uncomment and adjust as needed):
         # nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
@@ -123,7 +123,7 @@
         '';
       };
 
-      nymeria = self.nixosConfigurations.nymeria.config.system.build.toplevel;
+      controlstackos = self.nixosConfigurations.controlstackos.config.system.build.toplevel;
       vm = self.nixosConfigurations.vm.config.system.build.vm;
     };
 
