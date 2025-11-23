@@ -1,21 +1,22 @@
 # ControlStackAI OS Roadmap
 
-High-level goals for the OS (branding, AI dev env, UX ideas).
+## High-Level Goals
+- **Identity**: Professional, consistent ControlStackAI branding (colors, assets, boot).
+- **Workflow**: AI-first development environment (Warp, local LLMs, agentic workflows).
+- **Stability**: Declarative, reproducible NixOS configuration.
 
-## Goals
-- **Branding**: Deep integration of ControlStackAI aesthetics (Ink/Slate/Accent Blue).
-- **AI First**: Development environment centered around Agentic workflows (Warp, Cursor, local LLMs).
-- **Stability**: Reproducible NixOS configuration.
+## Phase 1: Branding & Rename (Current)
+- [x] Rename host `nymeria` -> `controlstackos`
+- [x] Theme Hyprland with ControlStackAI colors (#0C0F14, #B4DCFF)
+- [x] Create branded wallpaper and lockscreen assets
+- [x] Configure `hyprlock` for a professional lock screen
 
-## Roadmap
-- [x] Rename host to `controlstackos`.
-- [ ] **Phase 1 (Current)**: Basic Theming & Branding.
-    - [ ] Hyprland Theme (Colors).
-    - [ ] Wallpapers & Lockscreen.
-    - [ ] `hyprlock` setup.
-- [ ] **Phase 2**: AI Dev Environment.
-    - [ ] Standardize AI tools (MCP servers, local models).
-    - [ ] Git hooks for AI review.
-- [ ] **Phase 3**: Advanced UX.
-    - [ ] Custom boot splash (Plymouth/GRUB).
-    - [ ] Dashboard/Widgets (Eww or Ags).
+## Phase 2: AI Dev Environment
+- [ ] Standardize AI CLI tools (wrapper around LLMs)
+- [ ] Integrate "Dev Workbench" tools
+- [ ] MCP (Model Context Protocol) server integration
+
+## Future Ideas
+- [ ] Custom Plymouth boot splash
+- [ ] SDDM theme to match lockscreen
+- [ ] Secure boot & disk encryption (Disko)

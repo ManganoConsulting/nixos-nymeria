@@ -1,17 +1,10 @@
-
-    <svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
-        <!-- Background -->
-        <rect width="100%" height="100%" fill="#0C0F14"/>
-        
-        <!-- Subtle Gradient Overlay (using opacity) -->
-        <rect width="100%" height="100%" fill="#242A36" opacity="0.2"/>
-        
-        <!-- Center Logo Placeholder -->
-        <circle cx="960.0" cy="440.0" r="60" fill="none" stroke="#B4DCFF" stroke-width="4"/>
-        <path d="M 930.0 440.0 L 990.0 440.0" stroke="#B4DCFF" stroke-width="4"/>
-        <path d="M 960.0 410.0 L 960.0 470.0" stroke="#B4DCFF" stroke-width="4"/>
-        
-        <!-- Text -->
-        <text x="960.0" y="540.0" font-family="sans-serif" font-size="32" fill="#f1f5f9" text-anchor="middle" opacity="0.9">ControlStackAI</text>
-    </svg>
-    
+<svg width="3840" height="2160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0C0F14;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grad1)" />
+  <text x="50%" y="50%" font-family="sans-serif" font-size="64" fill="#B4DCFF" text-anchor="middle" opacity="0.1">ControlStackAI</text>
+</svg>

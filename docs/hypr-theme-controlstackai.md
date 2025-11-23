@@ -1,22 +1,18 @@
 # ControlStackAI Hyprland Theme
 
 ## Brand Colors
-Extracted from `controlstackai-site`:
-
-| Name | Hex | Usage |
-|---|---|---|
-| **Ink** | `#0C0F14` | Background / Base |
-| **Grid** | `#242A36` | Inactive Borders / Dividers |
-| **Accent** | `#B4DCFF` | Active Borders / Highlights |
-| **Slate 100** | `#f1f5f9` | Text (Primary) |
-| **Slate 300** | `#cbd5e1` | Text (Secondary) |
+Derived from `controlstackai-site`:
+- **Background (Ink)**: `#0C0F14`
+- **Surface (Grid)**: `#242A36`
+- **Accent (Blue)**: `#B4DCFF`
+- **Text**: `#f1f5f9`
+- **Secondary Text**: `#cbd5e1`
 
 ## Assets
-Assets are located in `assets/controlstackai/`.
+Located in `assets/controlstackai/`:
+- `wallpapers/wallpaper.svg`
+- `lockscreen/lockscreen.svg`
 
-- **Wallpapers**: `assets/controlstackai/wallpapers/`
-- **Lockscreen**: `assets/controlstackai/lockscreen/`
-
-## Configuration
-- **Hyprland**: Uses `rgb(B4DCFF)` for active borders and `rgb(242A36)` for inactive.
-- **Hyprlock**: Uses `Ink` background or generated image.
+## Integration
+- **Hyprland**: Borders use `#B4DCFF` (active) and `#242A36` (inactive).
+- **Hyprlock**: Uses `lockscreen.svg` and brand colors for text.

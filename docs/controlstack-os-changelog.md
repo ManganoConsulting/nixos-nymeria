@@ -1,10 +1,8 @@
 # ControlStackAI OS Changelog
 
-## 2025-11-23
-- **Host Rename**: Renamed `nymeria` to `controlstackos` in `flake.nix` and `networking.nix`.
-- **Structure**: Created `docs/` for OS planning and `assets/` for branding.
-- **Branding**: Extracted brand colors from `controlstackai-site`.
-- **Theming**:
-    - Updated Hyprland config with ControlStackAI colors.
-    - Generated branded wallpapers and lockscreen.
-    - Added `hyprlock` configuration.
+## [2025-11-23] Phase 1: Rename & Branding
+- **Host Rename**: Renamed `nymeria` to `controlstackos`.
+- **Branding**: Extracted colors from ControlStackAI website (`#0C0F14`, `#B4DCFF`).
+- **Docs**: Initialized roadmap and changelog.
+- **Assets**: Generated initial branded wallpapers and lockscreen (SVG placeholders).
+- **Hyprland**: Updated theme colors to match ControlStackAI brand.
