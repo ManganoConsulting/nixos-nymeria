@@ -151,6 +151,7 @@
     path = "/home/matthew/GithubProjects/nixos-nymeria";
     url = "git@github.com:ManganoConsulting/nixos-nymeria.git";
     branch = "main";
+    enforceBranch = false;
     worktrees = [];
   }
   {

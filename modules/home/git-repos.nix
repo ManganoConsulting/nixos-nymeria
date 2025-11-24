@@ -12,6 +12,7 @@
       path = r.path;
       url = r.url;
       branch = r.branch or "main";
+      enforceBranch = r.enforceBranch or true;
       worktrees = map (wt: {
         path = wt.path;
         branch = wt.branch;
@@ -33,6 +34,7 @@
       path=$(echo "$repo" | "$jq" -r '.path')
       url=$(echo  "$repo" | "$jq" -r '.url')
       branch=$(echo "$repo" | "$jq" -r '.branch')
+      enforce_branch=$(echo "$repo" | "$jq" -r '.enforceBranch // "true"')
 
       if [ -z "$path" ] || [ -z "$url" ]; then
         echo "[git-repos] Skipping entry with missing path or url: $repo" >&2
@@ -61,7 +63,7 @@
         "$git" -C "$path" fetch --all --prune || true
 
         current_branch=$("$git" -C "$path" rev-parse --abbrev-ref HEAD 2>/dev/null || echo "")
-        if [ "$current_branch" != "$branch" ] && [ -n "$branch" ]; then
+        if [ "$enforce_branch" = "true" ] && [ "$current_branch" != "$branch" ] && [ -n "$branch" ]; then
           "$git" -C "$path" fetch origin "$branch" || true
           # Attempt a non-destructive switch first, fallback to tracking remote
           "$git" -C "$path" switch --quiet "$branch" 2>/dev/null \
@@ -122,6 +124,11 @@ in {
               type = types.str;
               default = "main";
               description = "Branch to keep checked out in the main worktree";
+            };
+            enforceBranch = mkOption {
+              type = types.bool;
+              default = true;
+              description = "Whether to enforce that the main worktree stays on the configured branch";
             };
             worktrees = mkOption {
               type = with types;
