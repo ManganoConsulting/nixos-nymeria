@@ -10,7 +10,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const aiScript = path.join(__dirname, '..', 'ai-cli-workspace', 'ai');
+const aiScript = 'ai'; // Assume 'ai' is in PATH via Nix wrapper
+const aiOptions = { timeout: 120000 };
 
 app.post('/chat', (req, res) => {
   const { backend, prompt } = req.body || {};
@@ -21,7 +22,7 @@ app.post('/chat', (req, res) => {
 
   const args = [backend, prompt];
 
-  execFile(aiScript, args, { timeout: 120000 }, (err, stdout, stderr) => {
+  execFile(aiScript, args, aiOptions, (err, stdout, stderr) => {
     if (err) {
       console.error('AI backend error:', err, stderr?.toString?.() || '');
       return res
