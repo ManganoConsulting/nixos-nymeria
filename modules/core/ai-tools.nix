@@ -22,6 +22,19 @@
 
     # Local LLM backend
     ollama
+
+    # ControlStackAI CLI Tools
+    (pkgs.stdenv.mkDerivation {
+      name = "controlstack-ai-cli";
+      src = ../../ai-cli-workspace;
+      installPhase = ''
+        mkdir -p $out/bin
+        cp ai ai-git ai-one-shot $out/bin/
+        cp -r agents $out/bin/
+        chmod +x $out/bin/*
+        chmod +x $out/bin/agents/*
+      '';
+    })
   ];
 
   #### API key environment scaffold (example only — do NOT set real keys here)

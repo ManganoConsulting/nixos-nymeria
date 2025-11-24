@@ -16,7 +16,11 @@
     ../../modules/core/hyprland/programs.nix
     ../../modules/core/hyprland/windowrules.nix
     ../../modules/home/git-repos.nix
+    ../../modules/home/ai-web.nix
   ];
+
+  # Enable the AI Web Console service
+  services.ai-web.enable = true;
 
   home.username = "matthew";
   home.homeDirectory = "/home/matthew";
