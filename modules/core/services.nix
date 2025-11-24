@@ -37,7 +37,7 @@
   services.fstrim.enable = true;
   services.fwupd.enable = true;
 
-  # Power management DBus service required by some apps (e.g., Mozilla VPN UI)
+  # Power management DBus service required by some desktop apps (e.g., for battery and power status)
   services.upower.enable = true;
 
   # Git repository manager service

@@ -89,10 +89,6 @@
       ", XF86AudioPlay, exec, playerctl play-pause"
       ", XF86AudioPrev, exec, playerctl previous"
 
-      # Mozilla VPN controls
-      "$mainMod SHIFT, V, exec, vpn-toggle"
-      "$mainMod CTRL, V, exec, vpn-status notify"
-
       # Screenshots
       "$mainMod, Print, exec, screenshot-region"
       "$mainMod SHIFT, Print, exec, screenshot-full"

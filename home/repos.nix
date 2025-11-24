@@ -147,13 +147,6 @@
     worktrees = [];
   }
   {
-    name = "nixos-nymeria";
-    path = "/home/matthew/GithubProjects/nixos-nymeria";
-    url = "git@github.com:ManganoConsulting/nixos-nymeria.git";
-    branch = "main";
-    worktrees = [];
-  }
-  {
     name = "nvim";
     path = "/home/matthew/GithubProjects/nvim";
     url = "git@github.com:ManganoConsulting/nvim.git";

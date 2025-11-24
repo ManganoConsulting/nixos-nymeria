@@ -4,15 +4,10 @@
   lib,
   ...
 }: let
-  # Helper to switch to Cloudflare WARP (and stop Mozilla VPN to avoid conflicts)
+  # Helper to switch to Cloudflare WARP
   warpOn = pkgs.writeShellScriptBin "warp-on" ''
     #!/usr/bin/env bash
     set -euo pipefail
-
-    echo "Stopping Mozilla VPN service if running..."
-    if systemctl is-active --quiet mozillavpn; then
-      sudo systemctl stop mozillavpn
-    fi
 
     echo "Starting Cloudflare WARP service..."
     sudo systemctl start warp-svc
@@ -30,7 +25,7 @@
     echo "Cloudflare WARP is now active."
   '';
 
-  # Helper to switch back off WARP and re-enable Mozilla VPN
+  # Helper to switch back off WARP
   warpOff = pkgs.writeShellScriptBin "warp-off" ''
     #!/usr/bin/env bash
     set -euo pipefail
@@ -40,11 +35,6 @@
 
     echo "Stopping Cloudflare WARP service..."
     sudo systemctl stop warp-svc || true
-
-    echo "Starting Mozilla VPN service..."
-    sudo systemctl start mozillavpn || true
-
-    echo "Mozilla VPN service started. Use 'mozillavpn activate' to connect if needed."
   '';
 in {
   # Install Cloudflare WARP (provides warp-cli and warp-svc) and helper scripts
