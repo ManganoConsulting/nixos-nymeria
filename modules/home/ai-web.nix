@@ -4,7 +4,7 @@ with lib;
 
 let
   cfg = config.services.ai-web;
-  aiWebSrc = ../../../ai-web;
+  aiWebSrc = "${config.home.homeDirectory}/GithubProjects/nixos-nymeria/ai-web";
 in {
   options.services.ai-web = {
     enable = mkEnableOption "ControlStackAI Web Console";
@@ -38,11 +38,11 @@ in {
 
       Service = {
         # Ensure 'ai' command is found in path
-        Environment = "PATH=${config.home.profileDirectory}/bin:${pkgs.nodejs_22}/bin:${pkgs.system}/sw/bin:/usr/bin:/bin";
         # Point to the source files
         WorkingDirectory = "${aiWebSrc}";
-        # Use nixpkgs express
-        Environment = "NODE_PATH=${pkgs.nodePackages.express}/lib/node_modules";
+        Environment = [
+          "PATH=${config.home.profileDirectory}/bin:${pkgs.nodejs_22}/bin:${pkgs.system}/sw/bin:/usr/bin:/bin"
+        ];
         ExecStart = "${pkgs.nodejs_22}/bin/node server.js";
         Restart = "always";
       };
