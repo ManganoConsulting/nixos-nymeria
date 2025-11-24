@@ -43,6 +43,9 @@
     swaynotificationcenter # swaync + swaync-client
     hyprlock
     hyprpaper
+    
+    # Overlay tools
+    wofi
 
     # Development tools
     git # Version control

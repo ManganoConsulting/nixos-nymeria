@@ -16,6 +16,14 @@
 - [ ] Integrate "Dev Workbench" tools
 - [ ] MCP (Model Context Protocol) server integration
 
+## Phase 3: UX Enhancements (Overlays)
+- [ ] **On-demand status overlay**:
+    - Replace permanent bar with toggleable overlay (`$mainMod+S`).
+    - Show Wi-Fi, Battery, VPN, Time.
+- [ ] **Shortcut cheat-sheet**:
+    - One-key help overlay (`$mainMod+F1`).
+    - Lists keybindings and status shortcuts.
+
 ## Future Ideas
 - [ ] Custom Plymouth boot splash
 - [ ] SDDM theme to match lockscreen

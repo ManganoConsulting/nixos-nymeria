@@ -107,6 +107,12 @@
 
       # Lock Screen
       "$mainMod ALT, L, exec, hyprlock"
+
+      # Status Overlay
+      "$mainMod, S, exec, ~/.config/hypr/scripts/status_overlay.sh"
+
+      # Cheatsheet Overlay
+      "$mainMod, F1, exec, ~/.config/hypr/scripts/cheatsheet_overlay.sh"
     ];
 
     # Mouse bindings for window management
