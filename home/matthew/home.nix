@@ -8,13 +8,19 @@
     ../../modules/core/hyprland/appearance.nix
     ../../modules/core/hyprland/animations.nix
     ../../modules/core/hyprland/autostart.nix
+    ../../modules/core/hyprland/hyprlock.nix
+    ../../modules/core/hyprland/hyprpaper.nix
     ../../modules/core/hyprland/input.nix
     ../../modules/core/hyprland/keybindings.nix
     ../../modules/core/hyprland/monitors.nix
     ../../modules/core/hyprland/programs.nix
     ../../modules/core/hyprland/windowrules.nix
     ../../modules/home/git-repos.nix
+    ../../modules/home/ai-web.nix
   ];
+
+  # Enable the AI Web Console service
+  services.ai-web.enable = true;
 
   home.username = "matthew";
   home.homeDirectory = "/home/matthew";
@@ -39,6 +45,11 @@
     # Notifications
     libnotify # provides notify-send
     swaynotificationcenter # swaync + swaync-client
+    hyprlock
+    hyprpaper
+    
+    # Overlay tools
+    wofi
 
     # Development tools
     git # Version control

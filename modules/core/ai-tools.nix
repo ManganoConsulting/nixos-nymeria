@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 {
-  #### AI tooling for Nymeria
+  #### AI tooling for ControlStackAI OS
   #
   # This module provides system-level tools needed by the unified AI CLI
-  # workspace and the Nymeria AI Console web UI. It intentionally does
+  # workspace and the ControlStackAI Console web UI. It intentionally does
   # **not** contain any real secrets.
 
   environment.systemPackages = with pkgs; [
@@ -18,10 +18,23 @@
     # Python + Hugging Face helpers for local / scripted use
     python312
     python312Packages.transformers
-    python312Packages.huggingface_hub
+    python312Packages.huggingface-hub
 
     # Local LLM backend
     ollama
+
+    # ControlStackAI CLI Tools
+    (pkgs.stdenv.mkDerivation {
+      name = "controlstack-ai-cli";
+      src = ../../ai-cli-workspace;
+      installPhase = ''
+        mkdir -p $out/bin
+        cp ai ai-git ai-one-shot $out/bin/
+        cp -r agents $out/bin/
+        chmod +x $out/bin/*
+        chmod +x $out/bin/agents/*
+      '';
+    })
   ];
 
   #### API key environment scaffold (example only — do NOT set real keys here)

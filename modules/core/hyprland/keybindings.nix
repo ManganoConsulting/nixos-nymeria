@@ -104,6 +104,15 @@
       "$mainMod, N, exec, swaync-client --toggle-panel"
       "$mainMod CTRL, N, exec, swaync-client --toggle-dnd"
       "$mainMod SHIFT, N, exec, swaync-client --close-panel"
+
+      # Lock Screen
+      "$mainMod ALT, L, exec, hyprlock"
+
+      # Status Overlay
+      "$mainMod, S, exec, ~/.config/hypr/scripts/status_overlay.sh"
+
+      # Cheatsheet Overlay
+      "$mainMod, F1, exec, ~/.config/hypr/scripts/cheatsheet_overlay.sh"
     ];
 
     # Mouse bindings for window management

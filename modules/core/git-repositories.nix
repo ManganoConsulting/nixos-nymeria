@@ -135,6 +135,7 @@
       url = "git@github.com:ManganoConsulting/nixos-nymeria.git";
       branch = "main";
       path = "/home/matthew/GithubProjects/nixos-nymeria";
+      enforceBranch = false;
     };
 
     nvim = {

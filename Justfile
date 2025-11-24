@@ -36,7 +36,7 @@ update-warp version:
 	echo "        };"
 
 switch:
-	sudo nixos-rebuild switch --flake .#nymeria
+	sudo nixos-rebuild switch --flake .#controlstackos
 
 vm:
 	nix build .#nixosConfigurations.vm.config.system.build.vm
