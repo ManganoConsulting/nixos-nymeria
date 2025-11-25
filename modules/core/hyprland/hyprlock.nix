@@ -1,8 +1,10 @@
-{ pkgs, config, ... }:
-let
-  lockWallpaper = "${../../../assets/controlstackai/lockscreen/lockscreen.png}";
-in
 {
+  pkgs,
+  config,
+  ...
+}: let
+  lockWallpaper = "${../../../assets/controlstackai/lockscreen/lockscreen.png}";
+in {
   programs.hyprlock = {
     enable = true;
     settings = {

@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   #### AI tooling for ControlStackAI OS
   #
   # This module provides system-level tools needed by the unified AI CLI

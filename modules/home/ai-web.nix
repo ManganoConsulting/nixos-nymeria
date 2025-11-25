@@ -1,8 +1,10 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.services.ai-web;
   aiWebSrc = "${config.home.homeDirectory}/GithubProjects/nixos-nymeria/ai-web";
 in {
@@ -23,7 +25,7 @@ in {
       exec = "vivaldi http://localhost:3000";
       icon = "utilities-terminal";
       terminal = false;
-      categories = [ "Development" ];
+      categories = ["Development"];
       settings = {
         Keywords = "ai;console;workbench;";
         StartupNotify = "true";
@@ -33,7 +35,7 @@ in {
     systemd.user.services.ai-web = {
       Unit = {
         Description = "ControlStackAI Web Console";
-        After = [ "network.target" ];
+        After = ["network.target"];
       };
 
       Service = {
@@ -48,7 +50,7 @@ in {
       };
 
       Install = {
-        WantedBy = [ "default.target" ];
+        WantedBy = ["default.target"];
       };
     };
   };

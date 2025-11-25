@@ -32,12 +32,16 @@ with lib; let
         # Check if we're on the correct branch
         current_branch=$(${pkgs.git}/bin/git branch --show-current 2>/dev/null || echo "")
         if [ "$current_branch" != "$repo_branch" ]; then
-          ${if (repo.enforceBranch or true) then ''
-          echo "    Switching to branch: $repo_branch"
-          ${pkgs.git}/bin/git checkout "$repo_branch" 2>/dev/null || echo "    Warning: Failed to checkout $repo_branch for $repo_name"
-          '' else ''
-          echo "    Branch enforcement disabled for $repo_name. Keeping current branch: $current_branch"
-          ''}
+          ${
+      if (repo.enforceBranch or true)
+      then ''
+        echo "    Switching to branch: $repo_branch"
+        ${pkgs.git}/bin/git checkout "$repo_branch" 2>/dev/null || echo "    Warning: Failed to checkout $repo_branch for $repo_name"
+      ''
+      else ''
+        echo "    Branch enforcement disabled for $repo_name. Keeping current branch: $current_branch"
+      ''
+    }
         fi
 
         # Pull latest changes (fast-forward only)

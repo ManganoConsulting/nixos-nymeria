@@ -47,7 +47,7 @@
     swaynotificationcenter # swaync + swaync-client
     hyprlock
     hyprpaper
-    
+
     # Overlay tools
     wofi
 
