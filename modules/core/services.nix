@@ -15,6 +15,18 @@
   # Enable Tailscale for NAT-traversing private networking
   services.tailscale.enable = true;
 
+  # Tor anonymizing network daemon
+  services.tor = {
+    enable = true;
+    # Run as a client only; no relay/exit node
+    client = {
+      enable = true;
+    };
+    # Client mode already opens a local SOCKS proxy on 127.0.0.1:9050 by default.
+    # No extra SocksPort setting is needed here; adding one duplicates the port
+    # and makes Tor fail to start with "Address already in use".
+  };
+
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";
     HandleLidSwitchExternalPower = "ignore";
