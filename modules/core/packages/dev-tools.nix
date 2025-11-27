@@ -34,5 +34,8 @@
     python312Packages.setuptools
     # Wave terminal
     waveterm
+
+    # Command runner for Justfiles
+    just
   ];
 }
