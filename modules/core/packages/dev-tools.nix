@@ -34,6 +34,7 @@
     python312Packages.setuptools
     # Wave terminal
     waveterm
+    zellij
 
     # Command runner for Justfiles
     just
