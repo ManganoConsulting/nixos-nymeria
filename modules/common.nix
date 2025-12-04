@@ -27,12 +27,12 @@
   nixpkgs.overlays = [
     (final: prev: {
       warp-terminal = prev.warp-terminal.overrideAttrs (old: {
-        version = "0.2025.11.19.08.12.stable_06";
+        version = "0.2025.12.03.08.12.stable_02";
 
         # Match nixpkgs' packaging, but pin to this newer upstream version.
         src = prev.fetchurl {
-          url = "https://releases.warp.dev/stable/v0.2025.11.19.08.12.stable_06/warp-terminal-v0.2025.11.19.08.12.stable_06-1-x86_64.pkg.tar.zst";
-          hash = "sha256-3+NIjYmEmZgPOdRDdr7yV+jA+XDa9Dqc5F9VszB5tws=";
+          url = "https://releases.warp.dev/stable/v0.2025.12.03.08.12.stable_02/warp-terminal-v0.2025.12.03.08.12.stable_02-1-x86_64.pkg.tar.zst";
+          hash = "sha256-EkZ5ZDqKq6TO8yX5To+K4P50JvOa5LiT3pFa/UhhhWs=";
         };
       });
     })
