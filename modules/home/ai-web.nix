@@ -43,9 +43,9 @@ in {
         # Point to the source files
         WorkingDirectory = "${aiWebSrc}";
         Environment = [
-          "PATH=${config.home.profileDirectory}/bin:${pkgs.nodejs_22}/bin:/run/current-system/sw/bin:/usr/bin:/bin"
+          "PATH=${config.home.profileDirectory}/bin:${pkgs.nodejs}/bin:/run/current-system/sw/bin:/usr/bin:/bin"
         ];
-        ExecStart = "${pkgs.nodejs_22}/bin/node server.js";
+        ExecStart = "${pkgs.nodejs}/bin/node server.js";
         Restart = "always";
       };
 

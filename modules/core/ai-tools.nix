@@ -16,7 +16,7 @@
     git
 
     # Node.js runtime for the ai-web/ server (Express)
-    nodejs_22
+    nodejs
 
     # Python + Hugging Face helpers for local / scripted use
     python312
